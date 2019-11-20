@@ -1,5 +1,4 @@
 <?php
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -12,9 +11,17 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
+Route::get('/apply','ApplyController@index')->name('apply');
+Route::post('/store','ApplyController@store')->name('store');
+Route::get('/dashboard','ApplyController@dashboard')->name('dashboard');
+// ->middleware(['auth','HrMiddleware']);
+Route::get('/show','ApplyController@show')->name('show');
+// ->middleware(['auth','HrMiddleware']);
+Route::get('/singleApplier/{id}','ApplyController@viewIndividual')->name('singleApplier');
+Route::post('/approve/{id}','ResultController@approve')->name('approve');
+Route::post('/reject/{id}','ResultController@reject')->name('reject');
 Auth::routes();
-
 Route::get('/home', 'HomeController@index')->name('home');
