@@ -8,11 +8,13 @@
         <p>Name: {{ $applier->full_name}}</p>
         <p>Email: {{ $applier->email }}</p>
         <p>Applied for: {{ $applier->area_applied }}</p>
-        {{-- <a href="{{ route('show') }}">More info</a> --}}
-        <form action="{{route('show')}}" method="post">
+        <a href="{{ route('singleApplier',$applier->id) }}">
+            <button class="btn btn-primary" type="button">More info</button>
+        </a>
+        {{-- <form action="{{route('show')}}" method="post">
             @csrf
             <button class="btn btn-primary" type="submit">More info</button>
-        </form>
+        </form> --}}
     </div>
 </body>
 </html>

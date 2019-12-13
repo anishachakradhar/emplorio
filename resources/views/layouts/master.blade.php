@@ -19,7 +19,13 @@
         <!-- Custom styles for this template-->
         <link href="{{URL::to('css/sb-admin-2.min.css')}}" rel="stylesheet">
 
+        <script src="{{URL::to('vendor/jquery/jquery.min.js')}}"></script>
 
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.css">
+        {{-- <link href="cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"> --}}
+
+        	
+       
     </head>
 
 <body id="page-top">
@@ -57,7 +63,7 @@
     <!--End of Page Wrapper-->
 
     <!-- Bootstrap core JavaScript-->
-    <script src="{{URL::to('vendor/jquery/jquery.min.js')}}"></script>
+    
     <script src="{{URL::to('vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 
     <!-- Core plugin JavaScript-->
@@ -65,6 +71,12 @@
 
     <!-- Custom scripts for all pages-->
     <script src="{{URL::to('js/sb-admin-2.min.js')}}"></script>
+
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script>
+    {{-- <script
+            src="https://code.jquery.com/jquery-3.4.1.min.js"
+            integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+            crossorigin="anonymous"></script> --}}
 </body>
 </html>
 

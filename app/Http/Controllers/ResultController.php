@@ -20,8 +20,9 @@ class ResultController extends Controller
         $update_status= $applier->update([
             'status' => 'Approved',
         ]);
-        event(new ApprovalEvent($applier));
-        return redirect()->back()->with('success', 'Status changed.');
+        
+        // event(new ApprovalEvent($applier));
+         return redirect()->route('scheduleForm',[$applier])->with('success', 'Status changed.');
        
         if(!$applier){
             return redirect()->back()->with('error', 'Cannot update status');
@@ -38,7 +39,6 @@ class ResultController extends Controller
         $update_status= $applier->update([
             'status' => 'Rejected',
         ]);
-        // Mail::to($applier->email)->send(new ApplyMail($applier));
         event(new ApprovalEvent($applier,$update_status));
         return redirect()->back()->with('success', 'Status changed.');
        

@@ -6,7 +6,6 @@
     </div>
     <div class="col-sm-6 offset-2 jumbotron">
         <p style="font-size:160%">
-            <li>ID: {{$singleApplier->id}}</li>
             <li>Name: {{$singleApplier->full_name}} </li>
             <li>Email: {{$singleApplier->email}}</li>
             <li>Contact number: {{$singleApplier->contact_no}}</li>

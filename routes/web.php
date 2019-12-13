@@ -13,15 +13,19 @@
 Route::get('/', function () {
     return view('auth.login');
 });
+Route::get('/home', 'HomeController@index')->name('home');
+Auth::routes();
 
 Route::get('/apply','ApplyController@index')->name('apply');
 Route::post('/store','ApplyController@store')->name('store');
-Route::get('/dashboard','ApplyController@dashboard')->name('dashboard');
-// ->middleware(['auth','HrMiddleware']);
+Route::get('/dashboard','ApplyController@dashboard')->name('dashboard'); // ->middleware(['auth','HrMiddleware']);
 Route::get('/show','ApplyController@show')->name('show');
-// ->middleware(['auth','HrMiddleware']);
 Route::get('/singleApplier/{id}','ApplyController@viewIndividual')->name('singleApplier');
+Route::get('approvedList','ApplyController@approvedApplier')->name('approvedList');
+
 Route::post('/approve/{id}','ResultController@approve')->name('approve');
 Route::post('/reject/{id}','ResultController@reject')->name('reject');
-Auth::routes();
-Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('scheduleForm/{id}','InterviewScheduleController@scheduleForm')->name('scheduleForm');
+Route::post('storeScheduleInfo','InterviewScheduleController@storeInterviewInfo')->name('interviewInfo');
+Route::get('showInterviewInfo','InterviewScheduleController@showInterviewInfo')->name('showInterviewInfo');

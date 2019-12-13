@@ -15,15 +15,17 @@ class ApprovalEvent
     use Dispatchable, InteractsWithSockets, SerializesModels;
     public $applier;
     public $updated_status;
+    public $schedule;
 
     /**
      * Create a new event instance.
      *
      * @return void
      */
-    public function __construct($applier)
+    public function __construct($applier,$schedule)
     {
         $this->applier = $applier;
+        $this->schedule = $schedule;
         // $this->updated_status = $updated_status;
     }
 

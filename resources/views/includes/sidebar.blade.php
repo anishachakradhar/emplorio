@@ -31,7 +31,8 @@
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Screens</h6>
                     <a class="collapse-item" href="{{route('show')}}">Appliers</a>
-                    <a class="collapse-item" href="register.html">Interview Schedule</a>
+                    <a class="collapse-item" href="{{route('approvedList')}}">Approved appliers</a>
+                    <a class="collapse-item" href="{{route('showInterviewInfo')}}">Interview Schedule</a>
                     <a class="collapse-item" href="forgot-password.html">Process</a>
                     <div class="collapse-divider"></div>
                     

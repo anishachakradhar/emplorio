@@ -23,4 +23,10 @@ class Applier extends Model
     ];
     public $incrementing = false;
 
+    public function interview_Schedule()
+    {
+        return $this->hasOne('App\Interview_Schedule'::class,'applier_id','id');
+    }
+
+
 }

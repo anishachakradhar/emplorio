@@ -33,7 +33,7 @@ class ApprovalListener
         // dd($event->applier->status);
         // $updated_status = $event->applier->status;
         if ( $event->applier->status == "Approved"){
-            Mail::to($event->applier->email)->send(new ApprovalMail($event->applier));
+            Mail::to($event->applier->email)->send(new ApprovalMail($event->applier,$event->schedule));
         }
         elseif ( $event->applier->status == "Rejected"){
             Mail::to($event->applier->email)->send(new RejectedMail($event->applier));

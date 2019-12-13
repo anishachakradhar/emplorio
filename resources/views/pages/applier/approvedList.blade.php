@@ -8,11 +8,10 @@
                     {{ session()->get('success') }}
                 </div>
             @endif
-            <h1>Appliers</h1>
+            <h1>Approved appliers</h1>
             <table class="table table-striped">
                 <thead>
                 <tr>
-                    <td>ID</td>
                     <td>Full Name</td>
                     <td>Email</td>
                     <td>Contact Number</td>
@@ -24,16 +23,20 @@
                     <td>CV</td>
                     <td>Earliest Date to join</td>
                     <td>Status</td>
-                    <td colspan = 2>Actions</td>
                 </tr>
                 </thead>
                 <tbody>
                 @foreach($appliers as $applier)
+                    @if ($applier->status == 'Approved')
                     <tr>
-                        <td>
-                            <a href="{{ route('singleApplier',$applier->id)}}">{{$applier->id}}</a>
+                        <td style="display:none;">
+                            {{$applier->id}}
                         </td>
-                        <td>{{$applier->full_name}} </td>
+                        <td>
+                            <a href="{{ route('singleApplier',$applier->id)}}">
+                                {{$applier->full_name}} 
+                            </a>
+                        </td>
                         <td>{{$applier->email}}</td>
                         <td>{{$applier->contact_no}}</td>
                         <td>{{$applier->area_applied}}</td>
@@ -45,23 +48,8 @@
                         <td>{{$applier->earliest_date}}</td>
                         <td>{{$applier->status}}</td>
                         <td>
-                        
-                            <form action="{{route('approve',$applier->id)}}" method="post" >
-                                @csrf
-                                <div class="form-group" >
-                                    <button href="" class="btn btn-primary" type="submit" name="response" value="Approved" >Approve</button>
-                                </div>
-                            </form>
-                        </td>
-                        <td>
-                            <form action="{{route('reject',$applier->id)}}" method="post">
-                                @csrf
-                                <div class="form-group" >
-                                    <button href="" class="btn btn-danger" type="submit" name="response" value="Rejected" >Reject</button>
-                                </div>
-                            </form>
-                        </td>
                     </tr>
+                    @endif
                 @endforeach
                 </tbody>
             </table>

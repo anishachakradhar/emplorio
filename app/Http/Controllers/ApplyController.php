@@ -24,7 +24,7 @@ class ApplyController extends Controller
 
     public function index()
     {
-        return view('pages.applyForm');
+        return view('pages.applier.applyForm');
     }
 
     public function store(ApplyValidation $request)
@@ -64,13 +64,24 @@ class ApplyController extends Controller
     public function show()
     {
         $appliers = Applier::all();
-        return view('pages.viewDetails', compact('appliers'));
+        return view('pages.applier.viewDetails', compact('appliers'));
     }
 
     public function viewIndividual($id)
     {
         $singleApplier = Applier::findOrFail($id);
-        return view('pages.singleApplier', compact('singleApplier'));
+        return view('pages.applier.singleApplier', compact('singleApplier'));
+    }
+
+    public function approvedApplier()
+    {
+        $appliers = Applier::all();
+        // $status = Applier::find($appliers->status)->first();
+        // dd($status);
+        // if ($appliers->status == 'Approved'){
+            return view('pages.applier.approvedList', compact('appliers'));
+        // }
+        
     }
 
 }
