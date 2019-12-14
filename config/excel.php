@@ -44,7 +44,7 @@ return [
 
     'imports'            => [
 
-        'read_only' => true,
+        'read_only' => false,
 
         'heading_row' => [
 
@@ -75,6 +75,34 @@ return [
             'contiguous'             => false,
             'input_encoding'         => 'UTF-8',
         ],
+
+        'date' => [
+
+            /*
+            |————————————————————————–
+            | Enable/disable date formatting
+            |————————————————————————–
+            */
+            'enabled' => true,
+
+            /*
+            |————————————————————————–
+            | Default date format
+            |————————————————————————–
+            |
+            | If set to false, a carbon object will return
+            |
+            */
+            'format' => 'YYYY-MM-DD',
+
+            /*
+            |————————————————————————–
+            | Date columns
+            |————————————————————————–
+            */
+            // 'columns' => ['column1', 'column2'],
+        ],
+        
     ],
 
     /*

@@ -24,4 +24,8 @@ class Employee extends Model
     public function employeeSchedule(){
         return $this->hasMany('App\EmployeeSchedule','employee_id','employee_id');
     }
+
+    public function employeeAttendance(){
+        return $this->hasMany('App\Attendance','employee_id','employee_id');
+    }
 }

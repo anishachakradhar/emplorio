@@ -17,6 +17,8 @@ Route::get('/', function () {
 
 Auth::routes();
 
+//Employee details
+
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/etype','EmployeeTypeController@create')->name('employee.type');
 Route::post('/etype/store', 'EmployeeTypeController@store')->name('employee.type.store');
@@ -45,3 +47,11 @@ Route::get('/eschedule/show/{id}','EmployeeScheduleController@show')->name('empl
 Route::get('/eschedule/edit/{id}','EmployeeScheduleController@edit')->name('employee.schedule.edit');
 Route::patch('/eschedule/update/{id}','EmployeeScheduleController@update')->name('employee.schedule.update');
 Route::delete('/eschedule/delete/{id}','EmployeeScheduleController@softdelete')->name('employee.schedule.delete');
+
+//Attendance
+
+Route::get('/attendance/{id}','AttendanceController@show')->name('employee.attendance');
+// Route::post('/attendance/{id}','AttendanceController@show')->name('employee.attendance.show');
+Route::get('import-export', 'AttendanceController@importExport');
+Route::post('import', 'AttendanceController@import')->name('import');
+Route::get('export', 'AttendanceController@export');

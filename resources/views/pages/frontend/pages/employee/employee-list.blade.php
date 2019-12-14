@@ -22,6 +22,7 @@
                 <th scope="col">Edit</th>
                 <th scope="col">Delete</th>
                 <th scope="col">See schedule</th>
+                <th scope="col">See attendance</th>
                 </tr>
             </thead>
             <tbody>
@@ -40,12 +41,13 @@
                         <form action="{{route('employee.delete',$employee->employee_id)}}" method="POST">
                             @csrf
                             @method('DELETE')
-                            <button class="btn btn-danger" type="submit" aria-label="Delete">
+                            <button class="btn btn-danger" type="submit" aria-label="Delete">   
                             <i class="fa fa-trash-o" aria-hidden="true"></i></button>
                         </form>
                     </td>
                     <td><a class="btn btn-primary" href="{{route('employee.schedule.show',$employee->employee_id)}}" aria-label="Edit">View</i></a></td>
-                    </tr>
+                    <td><a class="btn btn-primary" href="{{route('employee.attendance',$employee->employee_id)}}" >View Attendance</i></a></td>
+                </tr>
                 @endforeach
             </tbody>
         </table>
