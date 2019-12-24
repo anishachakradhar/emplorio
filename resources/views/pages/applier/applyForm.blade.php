@@ -25,10 +25,11 @@
 
                     <div class="card-body">
                         <form action="{{route('store')}}" method="post" enctype="multipart/form-data">
+                            {{-- {{dd($process)}} --}}
                             @csrf
                             <div class="form-group row">
                                 <label for="name">Full Name</label>
-                                <input type="text" name="full_name" id="full_name" class="form-control" value="{{ old('name') }}" autofocus>
+                                <input type="text" name="full_name" id="full_name" class="form-control" value="{{ old('full_name') }}" autofocus>
                                 <span style="color: red">{{$errors->first('full_name')}}</span>
                             </div>
 
@@ -48,12 +49,14 @@
                                 <label for="position">Choose the area applying for</label>
                                 <br>
                                 <select name="areaOfInterest" value="{{ old('areaOfInterest') }}">
-                                    <option value="Web Designer">Web Designer</option>
-                                    <option value="App Developer">Web and Application Developer - PHP Laravel</option>
+                                    @foreach($posts as $post)
+                                        <option value="{{$post->posts}}">{{$post->posts}}</option>
+                                    @endforeach
+                                    {{-- <option value="App Developer">Web and Application Developer - PHP Laravel</option>
                                     <option value="Wordpress Developer">WordPress Developer</option>
                                     <option value="Social Media Manager">Social Media Manager/Analyst</option>
                                     <option value="Graphic Designer">Graphic Designer</option>
-                                    <option value="Management Intern">Management Intern</option>
+                                    <option value="Management Intern">Management Intern</option> --}}
                                 </select>
                                 <span style="color: red">{{$errors->first('areaOfInterest')}}</span>
                             </div>
@@ -75,12 +78,12 @@
                             </div>
 
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="internRequired" id="internRequired" value="Yes">
+                                <input class="form-check-input" type="radio" name="internRequired" id="internRequired" value="yes">
                                 <label class="form-check-label">Yes</label>
                             </div>
 
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="internRequired" id="internRequired" value="No">
+                                <input class="form-check-input" type="radio" name="internRequired" id="internRequired" value="no">
                                 <label class="form-check-label">No</label>
                             </div>
 

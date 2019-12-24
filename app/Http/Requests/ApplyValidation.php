@@ -3,6 +3,8 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
+use Carbon\Carbon;
 
 class ApplyValidation extends FormRequest
 {
@@ -30,9 +32,14 @@ class ApplyValidation extends FormRequest
             'areaOfInterest'=>'required',
             'coverLetter'=>'required',
             'expectation'=>'required',
-            'internRequired'=>'required',
+            'internRequired'=>[
+                'required',
+                Rule::in(['yes', 'no']),
+            ],
+            'CV' =>'required|mimes:doc,docx,pdf',
             'applyBy'=>'required',
-            'earliest_date'=>'required',
+            'earliest_date'=>'required|after:tomorrow',
         ];
     }
 }
+

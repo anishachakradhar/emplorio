@@ -47,11 +47,24 @@
                         <td>{{$applier->expectation}}</td>
                         <td>{{$applier->required_by_college}}</td>
                         <td>{{$applier->apply_by}}</td>
-                        <td>{{$applier->CV}}</td>
+                        <td>
+                            <a href="/uploads/{{$applier->CV}}" >
+                            {{-- download="{{$applier->CV}}     --}}
+                        {{-- <a href="{{asset('public/uploads/Deepika Shrestha L3C10.pdf')}}"> --}}
+                            {{$applier->CV}}
+                            </a>
+                            <br>
+                            <a href="" download="{{$applier->CV}} >
+                                <button type="button" class="btn btn-primary">
+                                    Download
+                                </button> 
+                            </a>
+
+                        </td>
                         <td>{{$applier->earliest_date}}</td>
                         <td>{{$applier->status}}</td>
                         <td>
-                        {{-- @if ($applier->status == 'pending') --}}
+                        @if ($applier->status == 'pending')
                             <form action="{{route('approve',$applier->id)}}" method="post" >
                                     @csrf
                                     <div class="form-group" >
@@ -68,12 +81,13 @@
                                     </button>
                                 </div>
                             </form>
-                        </td>
                         
-                        {{-- @else
-                            <td>No actions required.</td>
                         
-                        @endif --}}
+                        @else
+                            No actions required.
+                        
+                        @endif
+                    </td>
                     </tr>
                 @endforeach
                 </tbody>

@@ -13,7 +13,9 @@ class DatabaseSeeder extends Seeder
     {
         // $this->call(UsersTableSeeder::class);
         $this->call([
-            WorkingTimeTableSeeder::class
+            WorkingTimeTableSeeder::class,
+            ApplyProcessTableSeeder::class,
+            PostsOpenTableSeeder::class
         ]);
     }
     

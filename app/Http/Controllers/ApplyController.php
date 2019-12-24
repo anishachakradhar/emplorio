@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Applier;
+use App\Apply_Process;
+use App\Posts_Open;
 use App\Http\Requests\ApplyValidation;
 use App\Mail\ApplyMail;
 use Illuminate\Http\Request;
@@ -24,7 +26,9 @@ class ApplyController extends Controller
 
     public function index()
     {
-        return view('pages.applier.applyForm');
+        $posts = Apply_Process::all();
+        $process = Posts_Open::all();
+        return view('pages.applier.applyForm')->with(compact('posts','process'));
     }
 
     public function store(ApplyValidation $request)
@@ -43,16 +47,15 @@ class ApplyController extends Controller
 
         ]);
         $applier->id=(Uuid::generate()->string);
-        //$applier->CV='no file';
-         /**if ($file=$request->file('CV')){
+         if ($file=$request->file('CV')){
              $name=$file->getClientOriginalName();
              $extension=$file->getClientOriginalExtension();
 //             dd($extension);
              if($file->move('uploads',$name)){
                  $applier->CV = $name;
-//                 dd($applier);
+                //  dd($applier);
              }
-          }**/
+          }
 
              $applier->save();
 
@@ -76,11 +79,7 @@ class ApplyController extends Controller
     public function approvedApplier()
     {
         $appliers = Applier::all();
-        // $status = Applier::find($appliers->status)->first();
-        // dd($status);
-        // if ($appliers->status == 'Approved'){
-            return view('pages.applier.approvedList', compact('appliers'));
-        // }
+        return view('pages.applier.approvedList', compact('appliers'));
         
     }
 
